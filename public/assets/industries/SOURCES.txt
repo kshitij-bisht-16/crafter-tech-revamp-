@@ -1,0 +1,11 @@
+Industry imagery sourced from Unsplash, downloaded 2026-09-27.
+License: https://unsplash.com/license
+Each is resized by the image service to 1200 × 500 for local delivery.
+healthcare.jpg — https://images.unsplash.com/photo-1576091160399-112ba8d25d1d
+legaltech.jpg — https://images.unsplash.com/photo-1505664194779-8beaceb93744
+fintech.jpg — https://images.unsplash.com/photo-1486406146926-c627a92ad1ab
+education.jpg — https://images.unsplash.com/photo-1503676260728-1c00da094a0b
+logistics.jpg — https://images.unsplash.com/photo-1494412519320-aa613dfb7738
+retail.jpg — https://images.unsplash.com/photo-1441986300917-64674bd600d8
+real-estate.jpg — https://images.unsplash.com/photo-1600585154340-be6161a56a0c
+public-sector.jpg — https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b

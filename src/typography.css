@@ -1,0 +1,40 @@
+/* Measured from sentientx.com at 1440px: 60/66, 45/49.5, 30/33,
+   24/26.4, 18/19.8, and body 14/19.6. Neue Montreal is not bundled;
+   use a locally installed copy or the neutral Helvetica Neue fallback. */
+:root{
+  --font-text:'Neue Montreal','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --type-hero:60px;--type-section:45px;--type-title:30px;
+  --type-subtitle:24px;--type-small-title:18px;--type-body:14px;
+  --type-label:12px;--type-control:14px;
+}
+body{font-family:var(--font-text);font-size:var(--type-body);font-weight:400}
+button{font-family:inherit}
+.wordmark{font-family:Instrument,Arial,sans-serif}
+h1,h2,h3,h4,h5,h6{font-weight:400;line-height:1.1}
+.hero h1,.closing-grid h2{font-size:var(--type-hero);line-height:1.1;letter-spacing:-.03em;white-space:normal}
+h2,.section-heading h2,.expertise-copy h2,.ai-section h2,.ai-section .section-heading h2,.challenge-layout h2{font-size:var(--type-section);line-height:1.1;letter-spacing:-.03em}
+.closing-grid h2{font-size:var(--type-hero)}
+h3,.cap-story h3,.cap-story summary h3,.layer-panels h3,.industry-copy h3,.tech-description h3,.featured-copy h3,.engagement h3{font-size:var(--type-title);line-height:1.1;letter-spacing:-.03em}
+.process-panel h3,.principles h3,.challenge-list summary h3,.work-row h3{font-size:var(--type-subtitle);line-height:1.1;letter-spacing:0}
+.outcome h3,.engagement-list h4{font-size:var(--type-small-title);line-height:1.1;letter-spacing:0}
+p,.hero-copy p,.section-heading>p,.expertise-copy p,.cap-body>p,.cap-body .impact,.layer-panels p,.ai-section .section-heading>p,.process-panel p,.process-output p,.industry-copy p,.tech-description p,.challenge-layout>div>p,.challenge-body>p,.solution p,.outcome p,.featured-copy p,.work-row p,.principles p,.engagement-list p,.closing-copy p,.footer-brand p{font-size:var(--type-body);line-height:1.4;letter-spacing:0;font-weight:400}
+.eyebrow,.section-label,.section-number,.hero-top .eyebrow,.cap-story summary>.eyebrow,.layer-panels .eyebrow,.industry-copy>.eyebrow,.featured-copy>.eyebrow,.principles .eyebrow,.engagement>div>.eyebrow{font-size:var(--type-label);line-height:1.4;font-weight:400;letter-spacing:0}
+.desktop-nav a,.contact-link,.button,.text-link,.hero-actions .button,.hero-actions .text-link,.cap-body .text-link,.industry-copy .text-link,.process-output .text-link,.tech-description .text-link,.outcome .text-link,.featured-copy>.text-link,.closing-copy>.button,.ai-bottom .text-link{font-size:var(--type-control);line-height:1.2;font-weight:400;letter-spacing:0}
+.cap-index nav a,.tech-tabs button,.industry-nav button{font-size:var(--type-control);line-height:1.4;font-weight:400;letter-spacing:0}
+.cap-index nav a[aria-current=true],.industry-nav button[aria-selected=true]{font-weight:400}
+.layer-button strong,.journey-name,.tech-names>span{font-size:var(--type-subtitle);line-height:1.1;letter-spacing:0;font-weight:400}
+.layer-button>span:nth-of-type(2),.tags span,.industry-copy .tags span,.outcome-tech,.outcome-note,.footer-bottom,.footer-top>div>h2{font-size:var(--type-label);line-height:1.4;font-weight:400;letter-spacing:0}
+.footer-top>div:not(:first-child)>a{font-size:var(--type-body);font-weight:400;line-height:1.4}
+.doc-heading{font-family:var(--font-text);font-size:30px;line-height:1.1;letter-spacing:-.03em}
+.hero-copy p{max-width:390px}.hero-copy .desktop-break{display:none}
+.outcome h3{min-height:40px}
+@media(max-width:1050px){.desktop-nav{gap:16px}.desktop-nav a{font-size:12px}}
+@media(min-width:701px) and (max-width:900px){.site-header .contact-link{font-size:0}}
+@media(max-width:700px){
+  :root{--type-hero:40px;--type-section:32px;--type-title:22px;--type-subtitle:20px;--type-small-title:18px;--type-label:11px;--type-control:13px}
+  .hero-actions{gap:14px}.hero-actions .button{gap:16px}
+  .mobile-menu a{font-size:22px;line-height:1.1;font-weight:400}
+  .section-heading>p{margin-top:20px}.outcome h3{min-height:40px}
+  .footer-bottom a{font-size:12px}
+}
+@media(max-width:370px){:root{--type-hero:36px;--type-section:30px;--type-title:21px}.doc-heading{font-size:28px}}

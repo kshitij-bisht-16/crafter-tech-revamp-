@@ -1,0 +1,34 @@
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.intelligence-section{background:#f7f9fc;border-block:1px solid #e4eaf3;scroll-margin-top:0}
+.intelligence-stage{position:relative;min-height:800px;min-height:max(760px,calc(100svh - 105px));display:flex;flex-direction:column;justify-content:center;padding:105px 5.5% 88px}
+.intelligence-corner{position:absolute;top:30px;font-size:12px;font-weight:400;color:var(--ink)}.corner-start{left:22px}.corner-end{right:22px}
+.intelligence-endpoint{position:absolute;left:0;width:100%;text-align:center;font-size:16px;line-height:1.4;color:var(--ink);pointer-events:none}.endpoint-start{top:80px}.endpoint-end{bottom:44px}
+.intelligence-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(130px,.38fr);gap:5%;align-items:center;width:100%;max-width:1700px;margin:auto}
+.intelligence-visual{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.intelligence-dots{width:100%;height:auto;overflow:visible}
+.intelligence-dots circle{fill:#233954;transition:r .8s cubic-bezier(.2,.7,.2,1),fill .8s,opacity .8s}
+.intelligence-dots circle.is-emphasized{fill:var(--primary)}
+.intelligence-copy{min-width:0;min-height:205px;display:flex;align-items:center}
+.intelligence-copy [role=tabpanel]{width:100%}
+.intelligence-copy h3{font-size:24px;line-height:1.15;letter-spacing:-.035em;font-weight:500;margin:0 0 30px}
+.intelligence-copy p{font-size:20px;line-height:1.3;color:var(--ink);letter-spacing:-.015em;text-align:justify;hyphens:auto}
+.intelligence-nav{display:flex;flex-direction:column;align-items:stretch;gap:12px}
+.intelligence-nav button{position:relative;display:flex;align-items:center;gap:12px;border:0;background:none;padding:10px 0;color:#78869a;font-size:16px;font-weight:400;line-height:1.3;text-align:left;min-height:44px;transition:color .25s}
+.intelligence-nav button[aria-selected=true]{color:var(--ink)}.intelligence-nav button:hover{color:var(--blue)}
+.stage-dot{display:block;width:5px;height:5px;border-radius:50%;background:var(--primary);flex-shrink:0;opacity:0}.intelligence-nav button[aria-selected=true] .stage-dot{opacity:1}
+.intelligence-playback{position:absolute;right:28px;bottom:28px;display:flex;align-items:center;gap:12px;padding:10px 0;background:transparent;border:0;font-size:11px;color:var(--muted);min-height:44px}
+.intelligence-playback:hover{color:var(--blue)}
+@media(prefers-reduced-motion:no-preference){
+ .intelligence-copy [role=tabpanel]:not([hidden]){animation:intelligence-copy-in .55s ease both}
+ .intelligence-stage[data-playing=true] .is-emphasized{animation:intelligence-dot-breathe 4s ease-in-out infinite;animation-delay:var(--dot-delay)}
+ @keyframes intelligence-dot-breathe{0%,100%{opacity:1}50%{opacity:.45}}
+ @keyframes intelligence-copy-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+}
+@media(min-width:1800px){.intelligence-copy h3{font-size:30px}.intelligence-copy p{font-size:25px}.intelligence-nav button{font-size:20px}}
+@media(max-width:1100px){.intelligence-stage{padding-inline:4%}.intelligence-layout{grid-template-columns:1.1fr 1fr .43fr;gap:3%}.intelligence-copy h3{font-size:22px}.intelligence-copy p{font-size:18px}.intelligence-nav button{font-size:14px}}
+@media(max-width:700px){
+ .intelligence-stage{min-height:0;padding:72px 20px 100px}.intelligence-corner{top:24px}.endpoint-start{position:static;font-size:14px;margin-bottom:20px}.endpoint-end{bottom:55px;font-size:14px}
+ .intelligence-layout{grid-template-columns:1fr;gap:24px}.intelligence-visual{max-width:370px;width:100%;margin:auto}.intelligence-copy{min-height:165px;order:3;align-items:flex-start;padding:0 5px}.intelligence-copy h3{font-size:23px;margin-bottom:18px}.intelligence-copy p{font-size:17px;line-height:1.4;text-align:left;hyphens:none}
+ .intelligence-nav{order:2;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:0 18px}.intelligence-nav button{font-size:12px;padding:10px 0;gap:6px;min-height:44px}.intelligence-playback{right:0;bottom:8px;width:100%;justify-content:center;font-size:10px}
+}
+@media print{.intelligence-copy [role=tabpanel][hidden]{display:block!important}.intelligence-playback{display:none}.intelligence-stage{min-height:0}.intelligence-copy{display:block}.intelligence-copy h3{margin-top:20px}}

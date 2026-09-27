@@ -1,0 +1,58 @@
+// Source selections and qualifications: ../homepage-mapping.md.
+export const capabilities = [
+  {title:'AI & Cognitive Technologies', short:'AI & cognitive', description:'Bring intelligence into the work itself. We integrate generative AI, machine learning, language and vision capabilities into the workflows that move your business.', tags:['Generative AI','Machine learning','NLP & computer vision'], impact:'Turn enterprise knowledge into useful, actionable intelligence.', flow:['Enterprise data','Intelligence','Real workflows']},
+  {title:'Enterprise Application Engineering',short:'Application engineering',description:'Build the applications your business depends on. Scalable mobile, web and API-first products connect your teams, customers and operations.',tags:['Web & mobile','API-first architecture','Secure integrations'],impact:'Connect the experience your customers see to the systems behind it.',flow:['Customer experience','APIs & integrations','Enterprise systems']},
+  {title:'Cloud & Infrastructure',short:'Cloud & infrastructure',description:'Modernize, migrate and operate across AWS, Azure and Google Cloud. Bring engineering discipline to your infrastructure with automated delivery and security built in.',tags:['AWS · Azure · GCP','Cloud migration','DevOps'],impact:'Create a reliable foundation that can grow with your business.',flow:['Existing workloads','Cloud foundations','Continuous delivery']},
+  {title:'Data, Analytics & BI',short:'Data, analytics & BI',description:'Make operational data work harder. Connect data pipelines, predictive models and business intelligence to give your teams a clearer basis for decisions.',tags:['DataOps','Predictive analytics','Business intelligence'],impact:'Move from fragmented information to connected decision systems.',flow:['Data sources','Governed pipelines','Business intelligence']},
+  {title:'Quality Engineering',short:'Quality engineering',description:'Build confidence into every release. AI-powered testing, automated regression and release intelligence help teams identify issues and improve software quality.',tags:['AI-powered testing','Automated regression','Release intelligence'],impact:'Make quality a continuous part of how software is delivered.',flow:['Build','Test & evaluate','Release with confidence']},
+  {title:'Cybersecurity & Compliance',short:'Cybersecurity & compliance',description:'Protect the systems your enterprise relies on. Connect threat detection, identity management and compliance automation with secure-by-design engineering.',tags:['Threat detection','Identity & access','Compliance automation'],impact:'Strengthen protection across business-critical systems and data.',flow:['Enterprise systems','Security controls','Governed operations']}
+];
+export const layers = [
+  {name:'Data', sub:'A connected foundation', title:'Start with knowledge you can use.',text:'Bring together enterprise data, retrieval and data engineering to give AI relevant business context.',tags:['Data engineering','RAG','Enterprise knowledge']},
+  {name:'Intelligence',sub:'Understanding in context',title:'Make your knowledge actionable.',text:'Apply language models, machine learning and computer vision to understand information, identify patterns and support decisions.',tags:['LLMs','Machine learning','NLP & vision','Prompt evaluation']},
+  {name:'Automation',sub:'Intelligence that acts',title:'Move from answers to action.',text:'Connect agentic AI and intelligent RPA to multistep workflows, with exceptions escalated to people.',tags:['Agentic AI','Intelligent RPA','Human oversight']},
+  {name:'Applications',sub:'Embedded in real work',title:'Meet your teams where they work.',text:'Integrate assistants, models and automation with enterprise applications, CRMs and ERPs.',tags:['AI assistants','API integration','Enterprise applications']},
+  {name:'Business outcomes',sub:'A measurable difference',title:'Connect engineering to impact.',text:'Follow the work through to business results: more efficient research, faster processing and improved customer experiences.',tags:['Operational efficiency','Decision support','Customer experience']}
+];
+export const process = [
+  {name:'Discover',full:'Discovery & Readiness Audit',text:'Assess business needs, available data and technical readiness to identify feasible AI opportunities.',output:'A shared understanding of your AI readiness.'},
+  {name:'Strategize',full:'Strategy Design & Prioritization',text:'Prioritize use cases and align the roadmap with business goals, success measures and operating requirements.',output:'A roadmap focused on your business priorities.'},
+  {name:'Architect',full:'Architecture & Stack Definition',text:'Define the cloud, model, data and security foundations needed for the selected use cases.',output:'The technical foundations for implementation.'},
+  {name:'Build',full:'Pilot / MVP Implementation',text:'Implement a pilot or MVP to test the solution and validate its value before a wider rollout.',output:'A working pilot to evaluate in context.'},
+  {name:'Scale',full:'Review & Scale Recommendations',text:'Review the pilot and plan broader adoption, ongoing monitoring and model improvement.',output:'A considered path to wider adoption.'}
+];
+export const industries = [
+  {name:'Healthcare',eyebrow:'HEALTHTECH',title:'More connected care.\nMore informed decisions.',text:'From EHR systems to remote care and AI tools, we engineer healthcare technology around clinical workflows and patient experiences.',tags:['EHR integrations','Remote care','Clinical intelligence'],word:'CARE'},
+  {name:'LegalTech',eyebrow:'LEGAL TECHNOLOGY',title:'Find the answer.\nTrace it to the source.',text:'Turn complex documents into accessible knowledge with AI parsing, conversational research and page-level citations.',tags:['Document intelligence','Legal research','Cited answers'],word:'TRUST'},
+  {name:'FinTech & BFSI',eyebrow:'FINANCIAL SERVICES',title:'Engineered for trust.\nBuilt for everyday finance.',text:'Connect banking, payments, lending and risk workflows through secure enterprise applications and intelligent automation.',tags:['Payments & lending','Risk workflows','Claims automation'],word:'VALUE'},
+  {name:'EdTech',eyebrow:'EDUCATION',title:'Learning that moves\nwith the learner.',text:'Build learning platforms, assessment tools and personalized experiences that support modern education.',tags:['Learning platforms','Adaptive learning','Assessment tools'],word:'LEARN'},
+  {name:'Logistics',eyebrow:'LOGISTICS & MOBILITY',title:'Keep every moving\npart connected.',text:'Bring fleets, warehouses and shipment tracking together, with predictive intelligence to support operations.',tags:['Fleet systems','Shipment visibility','Warehouse operations'],word:'MOVE'},
+  {name:'Retail & Commerce',eyebrow:'RETAIL & CONSUMER GOODS',title:'Better experiences.\nConnected commerce.',text:'Unify commerce, inventory and personalized shopping experiences with enterprise platforms and AI recommendations.',tags:['Digital commerce','Personalization','Inventory platforms'],word:'REACH'},
+  {name:'Real Estate',eyebrow:'PROPERTY TECHNOLOGY',title:'Bring intelligence\nto every property.',text:'Connect property portals, CRM tools and AI capabilities to help teams manage information and property operations.',tags:['Property platforms','Valuation intelligence','CRM integration'],word:'SPACE'},
+  {name:'Public Sector',eyebrow:'GOVERNMENT & PUBLIC SECTOR',title:'Public services.\nPurposeful engineering.',text:'Modernize citizen services, government portals and administration through secure systems and workflow automation.',tags:['Citizen services','Secure portals','Process automation'],word:'SERVE'}
+];
+export const technologies = [
+  {name:'AI',title:'Intelligence, with the right foundations.',text:'Frameworks for model development and agent orchestration, selected around your use case.',items:['TensorFlow','PyTorch','LangChain','LangGraph']},
+  {name:'Cloud',title:'Infrastructure that meets your ambition.',text:'Cloud platforms for enterprise workloads, AI deployment and infrastructure modernization.',items:['AWS','Microsoft Azure','Google Cloud']},
+  {name:'Data',title:'From information to a connected asset.',text:'Storage, streaming and orchestration tools for enterprise data platforms.',items:['Snowflake','Databricks','BigQuery','Kafka','Apache Airflow','dbt']},
+  {name:'Applications',title:'The systems behind the experience.',text:'Established application technologies, used in enterprise modernization projects.',items:['Java','Spring','Angular','Oracle']},
+  {name:'DevOps',title:'A better path from build to release.',text:'Tools for repeatable infrastructure, container orchestration and continuous delivery.',items:['Kubernetes','Docker','Terraform','Helm','Jenkins','GitLab CI','Azure DevOps']},
+  {name:'Security',title:'Protection at every layer.',text:'Controls to protect your data and manage access across enterprise systems.',items:['TLS encryption','Multi-factor authentication','Role-based access','IAM','KMS','SIEM']}
+];
+export const challenges = [
+  {name:'Legacy systems',problem:'Business-critical applications can become difficult to connect, maintain and scale.',solution:'Modernize applications through phased integration, API connections and cloud engineering.',tags:'Application engineering + cloud'},
+  {name:'Disconnected data',problem:'Information spread across enterprise systems limits visibility and creates extra work.',solution:'Connect data sources and build governed pipelines that support analytics and enterprise AI.',tags:'Data engineering + AI'},
+  {name:'Manual workflows',problem:'Document-heavy tasks and repeated handoffs slow down teams and operations.',solution:'Bring document intelligence, agentic AI and process automation into the workflows that need them.',tags:'Intelligent RPA + agentic AI'},
+  {name:'Cloud complexity',problem:'Growing infrastructure creates delivery, visibility and security challenges.',solution:'Introduce infrastructure automation, continuous delivery and security controls across your cloud environment.',tags:'DevOps + cybersecurity'}
+];
+export const outcomes = [
+  {metric:'30',label:'lower cart abandonment',sector:'RETAIL & ECOMMERCE',text:'A generative AI shopping assistant supporting the customer journey.',tech:'Generative AI'},
+  {metric:'60',label:'faster data processing',sector:'GOVERNMENT',text:'Natural language automation for citizen queries and information processing.',tech:'Natural language processing'},
+  {metric:'50',label:'faster claims processing',sector:'INSURANCE',text:'AI document processing and machine learning to accelerate claims approval.',tech:'Document intelligence · ML'},
+  {metric:'60',label:'increase in sales conversions',sector:'ECOMMERCE',text:'Recommendations and predictive analytics that personalize shopping experiences.',tech:'Recommendations · Predictive analytics'}
+];
+export const engagements = [
+  {name:'AI Pod Engagement',text:'Domain-specialized teams with AI tooling, defined outcome milestones and governance from the start.',fit:'Product builds, AI deployments and workflow modernization.'},
+  {name:'Transformation Partnership',text:'A managed engineering partnership integrated into your roadmap, with delivery, quality and risk supported by an agile delivery model.',fit:'Enterprise modernization and multi-phase product roadmaps.'},
+  {name:'Intelligence-as-a-Service',text:'Continuous AI engineering support for model management, delivery optimization and workflow automation.',fit:'Existing teams that need AI augmentation and ongoing support.'}
+];
