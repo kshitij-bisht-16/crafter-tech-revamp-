@@ -71,6 +71,12 @@
 .sculpture{transform:none;transition:none;will-change:auto}
 
 /* Service photography retains a consistent crop and readable captions. */
+.heading-reveal{position:relative}
+.heading-reveal-text{opacity:1}
+.heading-reveal-pending>.heading-reveal-text{opacity:0}
+.heading-reveal-canvas{position:absolute;left:0;top:0;pointer-events:none;max-width:100%}
+@media(prefers-reduced-motion:reduce){.heading-reveal-pending>.heading-reveal-text{opacity:1}.heading-reveal-canvas{display:none}}
+@media print{.heading-reveal-pending>.heading-reveal-text{opacity:1}.heading-reveal-canvas{display:none}}
 /* Process stages reuse the former Domain Depth composition. */
 .process-depth{background:#e4edfa}
 .process-depth-system{display:grid;grid-template-columns:230px minmax(0,1fr);gap:50px}

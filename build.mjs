@@ -4,7 +4,7 @@ import { pages } from './src/pages.js';
 const allPages=new Map([['/',render()],...pages()]);
 await mkdir('dist', {recursive:true});
 await cp('public', 'dist', {recursive:true});
-for(const asset of ['styles.css','typography.css','pages.css','intelligence.css','domain.css','outcomes.css','outcome-motion.js','outcome-logo.js','client.js'])await copyFile(`src/${asset}`,`dist/${asset}`);
+for(const asset of ['styles.css','typography.css','pages.css','intelligence.css','domain.css','outcomes.css','outcome-motion.js','outcome-logo.js','heading-reveal.js','client.js'])await copyFile(`src/${asset}`,`dist/${asset}`);
 await mkdir('dist/vendor', {recursive:true});
 await copyFile('node_modules/lenis/dist/lenis.mjs','dist/vendor/lenis.js');
 await copyFile('node_modules/lenis/dist/lenis.css','dist/vendor/lenis.css');

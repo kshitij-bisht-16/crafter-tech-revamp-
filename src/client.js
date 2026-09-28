@@ -1,5 +1,6 @@
 // Small, independent enhancements. The complete content is pre-rendered in HTML.
 import './outcome-motion.js';
+import './heading-reveal.js';
 
 // Self-hosted Lenis; touch keeps native inertia and reduced motion is honored live.
 import Lenis from './vendor/lenis.js';
