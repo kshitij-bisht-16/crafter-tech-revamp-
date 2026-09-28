@@ -91,10 +91,28 @@
 .process-depth-output{border-top:1px solid #c6d6ec;margin:28px 0 18px;padding-top:22px}
 .process-depth-output>.eyebrow{font-size:10px;color:var(--muted)}
 .process-depth-output p{margin-top:10px;color:var(--blue)}
+@media(min-width:901px){
+  .process-depth-system{--stage-row-height:64px;align-items:start}
+  .process-depth-nav button{height:var(--stage-row-height);flex:none}
+  .process-depth-system .process-depth-panel{min-height:0;grid-template-rows:calc(5 * var(--stage-row-height))}
+  .process-depth-system .process-depth-art{height:100%;min-height:0}
+  .process-depth-art>svg{position:absolute}
+  .process-depth-copy{align-self:center}
+}
 @media(max-width:1150px){.process-depth-system{grid-template-columns:170px minmax(0,1fr);gap:30px}.process-depth-panel{gap:25px}.process-depth-art{min-height:420px}.process-depth-panel{min-height:420px}}
 @media(max-width:900px){.process-depth-system{grid-template-columns:140px minmax(0,1fr);gap:25px}.process-depth-panel{grid-template-columns:1fr;gap:25px}.process-depth-art{min-height:0;height:260px}.process-depth-art>svg{width:110%}.process-depth-art>strong{font-size:42px}.process-depth-copy h3{margin:18px 0}}
 @media(max-width:700px){.process-depth-system{grid-template-columns:1fr;gap:30px}.process-depth-nav button{min-height:52px;padding:12px 0}.process-depth-art{height:260px}.process-depth-output{margin-top:24px}}
 .cap-visual.cap-photo{padding:0;overflow:hidden}
+@media(max-width:700px){
+ .process-depth-system{display:block}
+ .process-depth-panels{display:none}
+ .process-depth-nav>.process-depth-panel{margin:22px 0 28px;min-width:0}
+ .process-depth-nav button[aria-expanded]{width:100%}
+ .process-depth-nav button[aria-expanded]>svg{display:none}
+ .process-depth-nav button[aria-expanded]::after{content:'+';margin-left:auto;font-size:22px;font-weight:400}
+ .process-depth-nav button[aria-expanded=true]{color:var(--blue)}
+ .process-depth-nav button[aria-expanded=true]::after{content:'−'}
+}
 .cap-photo>img{display:block;width:100%;height:auto;aspect-ratio:5/3;object-fit:cover}
 .cap-photo .diagram-caption{padding:16px 18px;margin:0}
 @media(max-width:700px){.cap-photo .diagram-caption{padding:14px 12px}}

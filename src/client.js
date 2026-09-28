@@ -1,8 +1,31 @@
 // Small, independent enhancements. The complete content is pre-rendered in HTML.
+import './outcome-motion.js';
 
 // Self-hosted Lenis; touch keeps native inertia and reduced motion is honored live.
 import Lenis from './vendor/lenis.js';
 const lenis = new Lenis({autoRaf:true, lerp:0.09, smoothWheel:true, syncTouch:false, respectReducedMotion:true});
+
+// Native modal keeps keyboard focus inside and restores it on dismissal.
+const metricsDialog=document.querySelector('#outcome-metrics-dialog');
+if(metricsDialog){
+ const trigger=document.querySelector('.outcome-orbit-metrics');
+ let resumeScroll=false;
+ trigger.addEventListener('click',()=>{
+  resumeScroll=!lenis.isStopped;
+  lenis.stop();
+  metricsDialog.showModal();
+ });
+ metricsDialog.querySelector('.outcome-metrics-close').addEventListener('click',()=>metricsDialog.close());
+ metricsDialog.addEventListener('click',event=>{
+  if(event.target!==metricsDialog)return;
+  const bounds=metricsDialog.getBoundingClientRect();
+  if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)metricsDialog.close();
+ });
+ metricsDialog.addEventListener('close',()=>{
+  if(resumeScroll)lenis.start();
+  trigger.focus({preventScroll:true});
+ });
+}
 
 // Keep URL history and keyboard focus while Lenis handles in-page navigation.
 document.addEventListener('click',event=>{
@@ -21,6 +44,7 @@ document.addEventListener('click',event=>{
 });
 
 document.querySelectorAll('[data-tabs]').forEach(group => {
+  if(group.dataset.tabs==='process')return;
   const tablist=group.querySelector('[role="tablist"]');
   const tabs=[...tablist.querySelectorAll('[role="tab"]')];
   const activate=(tab, focus=false, automatic=false)=>{
@@ -48,6 +72,61 @@ document.querySelectorAll('[data-tabs]').forEach(group => {
     });
   });
 });
+
+// Reuse the same process panels: desktop tabs, mobile inline accordion.
+const processGroup=document.querySelector('[data-tabs="process"]');
+if(processGroup){
+ const mobileProcess=matchMedia('(max-width:700px)');
+ const nav=processGroup.querySelector('.process-depth-nav');
+ const panelHost=processGroup.querySelector('.process-depth-panels');
+ const buttons=[...nav.querySelectorAll('button')];
+ const panels=buttons.map(button=>document.getElementById(button.getAttribute('aria-controls')));
+ let selected=0;
+ const paint=()=>{
+  buttons.forEach((button,i)=>{
+   const active=i===selected;
+   button.tabIndex=mobileProcess.matches||active?0:-1;
+   button.setAttribute(mobileProcess.matches?'aria-expanded':'aria-selected',String(active));
+   panels[i].hidden=!active;
+  });
+  lenis.resize();
+ };
+ const layout=()=>{
+  if(mobileProcess.matches){
+   nav.removeAttribute('role');nav.removeAttribute('aria-orientation');nav.removeAttribute('aria-label');
+  }else{
+   nav.setAttribute('role','tablist');nav.setAttribute('aria-orientation','vertical');nav.setAttribute('aria-label','AI transformation process');
+   if(selected<0)selected=0;
+  }
+  buttons.forEach((button,i)=>{
+   button.removeAttribute(mobileProcess.matches?'aria-selected':'aria-expanded');
+   if(mobileProcess.matches){
+    button.removeAttribute('role');
+    button.after(panels[i]);
+    panels[i].setAttribute('role','region');panels[i].removeAttribute('tabindex');
+   }else{
+    button.setAttribute('role','tab');panelHost.append(panels[i]);
+    panels[i].setAttribute('role','tabpanel');panels[i].tabIndex=0;
+   }
+  });
+  paint();
+ };
+ buttons.forEach((button,i)=>{
+  button.addEventListener('click',()=>{selected=mobileProcess.matches&&selected===i?-1:i;paint();});
+  button.addEventListener('keydown',event=>{
+   let target;
+   if(event.key==='ArrowDown')target=(i+1)%buttons.length;
+   else if(event.key==='ArrowUp')target=(i+buttons.length-1)%buttons.length;
+   else if(event.key==='Home')target=0;
+   else if(event.key==='End')target=buttons.length-1;
+   if(target===undefined)return;
+   event.preventDefault();
+   if(!mobileProcess.matches){selected=target;paint();}
+   buttons[target].focus();
+  });
+ });
+ mobileProcess.addEventListener('change',layout);layout();
+}
 
 const menuButton=document.querySelector('.menu-toggle');
 const menu=document.getElementById('mobile-menu');

@@ -44,9 +44,9 @@ details[open]>summary>svg.plus{transform:rotate(45deg)}
 /* Reference-inspired floating header, shared by every page. */
 .site-header.floating-header{height:108px;padding:24px 32px;position:sticky;top:0;display:flex;align-items:flex-start;justify-content:space-between;background:transparent;border:0;pointer-events:none;z-index:60}
 /* A fading backdrop softens scrolling content without blurring navigation text. */
-.floating-header::before{content:"";position:absolute;inset:0 0 -40px;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,#f4f7fce6,#f4f7fc00);-webkit-mask-image:linear-gradient(to bottom,#000 35%,transparent);mask-image:linear-gradient(to bottom,#000 35%,transparent)}
+.floating-header::before{content:"";position:absolute;inset:0 0 -40px;z-index:-1;pointer-events:none;background:transparent;-webkit-mask-image:linear-gradient(to bottom,#000 35%,transparent);mask-image:linear-gradient(to bottom,#000 35%,transparent)}
 @supports ((backdrop-filter:blur(20px)) or (-webkit-backdrop-filter:blur(20px))){
- .floating-header::before{background:#f4f7fc55;-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+ .floating-header::before{-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
  .floating-header .header-capsule,.site-header.floating-header .contact-link{background:rgb(16 35 63 / 88%);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 8px 28px #10233f16,inset 0 0 0 1px #ffffff12}
  .floating-header .header-page-label{background:rgb(229 237 250 / 65%);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
 }
