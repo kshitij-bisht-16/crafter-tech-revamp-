@@ -10,7 +10,6 @@ export function outcomesSection(){
   <div class="outcome-orbit-chips">${chips.map((text,i)=>`<div class="outcome-orbit-chip" style="--chip-x:${20+i%3*22}%;--chip-y:${25+Math.floor(i/3)*20}%"><i></i><span>${text}</span></div>`).join('')}</div>
  </div>
  <div class="wrap outcome-orbit-content">
-  <div class="section-label"><span class="tiny-mark" aria-hidden="true"></span><span>REFERENCE OUTCOMES</span></div>
   <h2 id="outcome-heading">The impact is what matters.</h2>
   <div class="outcome-orbit-copy">
    <div><h3>Engineering that moves business forward.</h3><p>Connect AI to the work that makes a difference. From helping customers complete a purchase to accelerating data and claims processing, these published examples show what focused engineering can make possible.</p></div>

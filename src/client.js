@@ -36,7 +36,6 @@ document.addEventListener('click',event=>{
   const target=document.getElementById(hash.slice(1));
   if(!target)return;
   event.preventDefault();
-  if(target.classList.contains('cap-story'))target.open=true;
   lenis.resize();
   if(location.hash!==hash)history.pushState(null,'',hash);
   lenis.scrollTo(target,{onComplete:()=>{
@@ -150,7 +149,6 @@ const mobile=matchMedia('(max-width:700px)');
 const stories=[...document.querySelectorAll('.cap-story')];
 const capabilityLinks=[...document.querySelectorAll('.cap-index a')];
 function applyResponsiveBehavior(){
-  stories.forEach((story,i)=>{story.open=!mobile.matches||i===0;});
   document.querySelector('.journey')?.setAttribute('aria-orientation',mobile.matches?'vertical':'horizontal');
   document.querySelector('.intelligence-nav')?.setAttribute('aria-orientation',mobile.matches?'horizontal':'vertical');
   document.querySelector('.industry-nav')?.setAttribute('aria-orientation',mobile.matches?'horizontal':'vertical');
@@ -158,7 +156,6 @@ function applyResponsiveBehavior(){
 }
 applyResponsiveBehavior();
 mobile.addEventListener('change',applyResponsiveBehavior);
-capabilityLinks.forEach(link=>link.addEventListener('click',()=>{document.querySelector(link.getAttribute('href')).open=true;}));
 if('IntersectionObserver' in window){
   const observer=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
@@ -172,13 +169,6 @@ if('IntersectionObserver' in window){
   },{rootMargin:'-20% 0px -50% 0px',threshold:0});
   stories.forEach(story=>observer.observe(story));
 }
-// Expand a capability when arriving through an anchor, including browser history.
-function openHashTarget(){
-  const target=document.getElementById(location.hash.slice(1));
-  if(target?.classList.contains('cap-story'))target.open=true;
-}
-window.addEventListener('hashchange',openHashTarget);openHashTarget();
-
 // Native disclosure menus remain usable without JavaScript.
 const navGroups=[...document.querySelectorAll('.nav-group')];
 navGroups.forEach(group=>group.addEventListener('toggle',()=>{
