@@ -10,7 +10,7 @@ export function outcomesSection(){
   <div class="outcome-orbit-chips">${chips.map((text,i)=>`<div class="outcome-orbit-chip" style="--chip-x:${20+i%3*22}%;--chip-y:${25+Math.floor(i/3)*20}%"><i></i><span>${text}</span></div>`).join('')}</div>
  </div>
  <div class="wrap outcome-orbit-content">
-  <div class="section-label"><span class="tiny-mark" aria-hidden="true"></span><span>REFERENCE OUTCOMES</span><span class="section-number">09 / 12</span></div>
+  <div class="section-label"><span class="tiny-mark" aria-hidden="true"></span><span>REFERENCE OUTCOMES</span></div>
   <h2 id="outcome-heading">The impact is what matters.</h2>
   <div class="outcome-orbit-copy">
    <div><h3>Engineering that moves business forward.</h3><p>Connect AI to the work that makes a difference. From helping customers complete a purchase to accelerating data and claims processing, these published examples show what focused engineering can make possible.</p></div>
@@ -24,6 +24,5 @@ export function outcomesSection(){
   <p id="outcome-metrics-note">Third-party reference outcomes, not Craftertech project claims.</p>
   <div class="outcome-orbit-metric-grid">${outcomes.map(o=>`<article><span class="eyebrow">${o.sector}</span><strong>${o.metric}<small>%</small></strong><h3>${o.label}</h3><p>${o.text}</p><span class="outcome-orbit-tech">${o.tech}</span></article>`).join('')}</div>
  </dialog>
- <button class="outcome-orbit-pause" type="button" aria-pressed="false">Pause animation</button>
  </section>`;
 }

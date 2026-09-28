@@ -66,13 +66,15 @@ details[open]>summary>svg.plus{transform:rotate(45deg)}
 .floating-header .contact-link{display:flex;margin-left:auto;min-height:44px;padding:0 14px;gap:16px;background:var(--dark);color:var(--white);border-radius:3px;font-size:14px;line-height:1.2}
 .floating-header .contact-link .material-icon{display:block;width:20px;height:20px;padding:2px;background:var(--primary);color:#071b38;border-radius:2px}
 .floating-header .capsule-menu{position:static;max-height:calc(100dvh - 108px);padding:0 16px 20px;background:transparent;color:var(--white);border:0;border-top:1px solid #ffffff20;box-shadow:none;overflow-y:auto;overscroll-behavior:contain}
-.menu-art{height:96px;overflow:hidden;color:#82b2ff;display:flex;justify-content:center;align-items:center;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
-.menu-art svg{width:280px;height:140px;opacity:.75}
 .capsule-menu .capsule-links a{display:flex;justify-content:space-between;align-items:center;min-height:46px;padding:12px 8px;border-bottom:1px solid #ffffff25;color:var(--white);font-size:14px;font-weight:400;line-height:1.3;gap:18px}
 .capsule-menu .capsule-links a:hover,.capsule-menu .capsule-links a[aria-current=page]{color:#a9caff;background:#ffffff06}
 .capsule-links .material-icon{width:17px;height:17px}
 .menu-caption{display:block;margin:22px 8px 0;font-size:9px;line-height:1.4;color:#91aaca;letter-spacing:.06em}
 .header-capsule :focus-visible,.floating-header .contact-link:focus-visible{outline-color:#a9caff}
 @media(max-width:900px){.site-header.floating-header{padding-inline:20px}.header-capsule{width:340px}.floating-header .contact-link{font-size:12px;gap:10px}.header-page-label{max-width:150px}}
-@media(max-width:700px){.site-header.floating-header{height:92px;padding:16px 20px}.floating-header .header-page-label,.floating-header .contact-link{display:none}.header-capsule{top:16px;width:calc(100% - 40px);max-width:380px}.floating-header .capsule-menu{max-height:calc(100dvh - 100px)}.menu-art{height:72px}.capsule-menu .capsule-links a{min-height:46px;font-size:15px}.menu-caption{margin-top:18px}}
+@media(max-width:700px){.site-header.floating-header{height:92px;padding:16px 20px}.floating-header .header-page-label,.floating-header .contact-link{display:none}.header-capsule{top:16px;width:calc(100% - 40px);max-width:380px}.floating-header .capsule-menu{max-height:calc(100dvh - 100px)}.capsule-menu .capsule-links a{min-height:46px;font-size:15px}.menu-caption{margin-top:18px}}
 @media(prefers-reduced-motion:no-preference){.capsule-menu:not([hidden]){animation:menu-reveal .2s ease-out}@keyframes menu-reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}}
+.text-link,.collection-link{color:var(--blue);text-decoration:underline;text-decoration-color:#a8c8f8;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-skip-ink:auto;transition:color .2s,text-decoration-color .2s}
+.text-link:hover,.text-link:focus-visible,.collection-link:hover,.collection-link:focus-visible{color:var(--blue-dark);text-decoration-color:currentColor}
+.dark-section .text-link,.dark-section .collection-link{color:var(--blue-light);text-decoration-color:#719ad1}
+.dark-section .text-link:hover,.dark-section .text-link:focus-visible,.dark-section .collection-link:hover,.dark-section .collection-link:focus-visible{color:var(--white);text-decoration-color:currentColor}

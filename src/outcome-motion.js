@@ -5,9 +5,8 @@ if(section){
  const art=section.querySelector('.outcome-orbit-art');
  const svg=section.querySelector('.outcome-orbit-rings');
  const chips=[...section.querySelectorAll('.outcome-orbit-chip')];
- const button=section.querySelector('.outcome-orbit-pause');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- let paused=reduced.matches,visible=false,frame=0,last=0,time=0;
+ let visible=false,frame=0,last=0,time=0;
  const labels=chips.map(chip=>({chip,span:chip.querySelector('span'),dot:chip.querySelector('i'),collapsed:38,full:260}));
  const measure=()=>{
   labels.forEach(label=>{
@@ -44,12 +43,9 @@ if(section){
  };
  const sync=()=>{
   cancelAnimationFrame(frame);last=0;
-  button.textContent=paused?'Play animation':'Pause animation';
-  button.setAttribute('aria-pressed',String(paused));
-  if(visible&&!paused&&!document.hidden)frame=requestAnimationFrame(tick);
+  if(visible&&!reduced.matches&&!document.hidden)frame=requestAnimationFrame(tick);
  };
- button.addEventListener('click',()=>{paused=!paused;sync();});
- reduced.addEventListener('change',()=>{paused=reduced.matches;draw();sync();});
+ reduced.addEventListener('change',()=>{draw();sync();});
  document.addEventListener('visibilitychange',sync);
  new ResizeObserver(()=>{measure();draw();}).observe(art);
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();},{threshold:0}).observe(section);

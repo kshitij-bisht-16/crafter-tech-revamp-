@@ -18,7 +18,7 @@ const expertisePhotos=[
  ['quality','Colleagues reviewing software together on a laptop'],
  ['security','Padlock on a keyboard representing secure access to digital systems'],
 ];
-const label=(num,text)=>`<div class="section-label"><span class="tiny-mark" aria-hidden="true"></span><span>${text}</span><span class="section-number">${num} / 12</span></div>`;
+const label=(num,text)=>`<div class="section-label"><span class="tiny-mark" aria-hidden="true"></span><span>${text}</span></div>`;
 const heading=(title,copy='')=>`<div class="section-heading"><h2>${title}</h2>${copy?`<p>${copy}</p>`:''}</div>`;
 const wordmark=(tone="black")=>`<img class="brand-symbol" src="/assets/craftertech-${tone}.svg" width="34" height="34" alt=""><span>craftertech</span>`;
 

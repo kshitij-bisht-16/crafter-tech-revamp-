@@ -201,22 +201,29 @@ briefForm?.addEventListener('submit',event=>{
  document.getElementById('brief-status').textContent='Your brief is ready to download. No information has been sent.';
 });
 
-// Animated intelligence stages pause off-screen and after direct user input.
+// Five scroll-driven stages share a sticky visual; native scrolling stays intact.
 const intelligence=document.querySelector('[data-tabs="intelligence"]');
 if(intelligence){
- const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- const playback=intelligence.querySelector('.intelligence-playback');
+ const section=intelligence.closest('.intelligence-section');
  const tabs=[...intelligence.querySelectorAll('[role="tab"]')];
  const dots=[...intelligence.querySelectorAll('[data-logo-part]')];
- let index=0, paused=reduced.matches, visible=false, timer;
- const update=()=>{
-  clearInterval(timer);
-  const playing=!paused&&visible&&!document.hidden;
-  intelligence.dataset.playing=String(playing);
-  playback.setAttribute('aria-pressed',String(paused));
-  playback.setAttribute('aria-label',paused?'Play automatic stage changes':'Pause automatic stage changes');
-  playback.innerHTML=paused?'Play animation <span aria-hidden="true">▷</span>':'Pause animation <span aria-hidden="true">Ⅱ</span>';
-  if(playing)timer=setInterval(()=>intelligence.dispatchEvent(new CustomEvent('select-tab',{detail:{index:(index+1)%tabs.length}})),6000);
+ const hint=intelligence.querySelector('.intelligence-scroll-hint');
+ let index=0,step=500,stickyTop=80,frame=0;
+ section.classList.add('intelligence-scroll-section');
+ const sync=()=>{
+  frame=0;
+  const start=section.getBoundingClientRect().top+scrollY-stickyTop;
+  const next=Math.max(0,Math.min(tabs.length-1,Math.round((scrollY-start)/step)));
+  if(next!==index)intelligence.dispatchEvent(new CustomEvent('select-tab',{detail:{index:next}}));
+ };
+ const requestSync=()=>{if(!frame)frame=requestAnimationFrame(sync);};
+ const measure=()=>{
+  const height=intelligence.offsetHeight;
+  stickyTop=Math.min(innerWidth<=700?76:92,innerHeight-height);
+  step=Math.max(340,innerHeight*.65);
+  section.style.setProperty('--intelligence-sticky-top',stickyTop+'px');
+  section.style.height=(height+step*(tabs.length-1))+'px';
+  lenis.resize();requestSync();
  };
  intelligence.addEventListener('tabchange',event=>{
   index=event.detail.index;intelligence.dataset.activeIndex=String(index);
@@ -224,15 +231,17 @@ if(intelligence){
    const active=Number(dot.dataset.logoPart)===index||(index===4&&i%4===0);
    dot.classList.toggle('is-emphasized',active);dot.setAttribute('r',active?'5.8':'2.7');
   });
-  if(!event.detail.automatic)paused=true;
-  update();
+  hint.textContent='Scroll to explore · '+String(index+1).padStart(2,'0')+' / 05';
+  if(!event.detail.automatic){
+   const destination=section.getBoundingClientRect().top+scrollY-stickyTop+index*step;
+   lenis.scrollTo(destination,{immediate:true});
+  }
  });
- playback.addEventListener('click',()=>{paused=!paused;update();});
- reduced.addEventListener('change',()=>{paused=reduced.matches;update();});
- document.addEventListener('visibilitychange',update);
- if('IntersectionObserver' in window){new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;update();},{threshold:.25}).observe(intelligence);}else{visible=true;}
- intelligence.addEventListener('focusin',event=>{if(event.target!==playback){paused=true;update();}});
- update();
+ window.addEventListener('scroll',requestSync,{passive:true});
+ window.addEventListener('resize',measure,{passive:true});
+ new ResizeObserver(measure).observe(intelligence);
+ document.fonts.ready.then(measure);
+ measure();
 }
 
 // Industry cards advance automatically while visible; page scrolling stays independent.
@@ -240,9 +249,8 @@ const domain=document.querySelector('.domain-section');
 if(domain){
  const cards=[...domain.querySelectorAll('.domain-card')];
  const markers=[...domain.querySelectorAll('[data-domain-index]')];
- const playback=domain.querySelector('.domain-playback');
  const simpleMotion=matchMedia('(prefers-reduced-motion: reduce)');
- let current=0,paused=simpleMotion.matches,visible=false,timer,animations=[];
+ let current=0,visible=false,timer,animations=[];
  cards.forEach(card=>{card.hidden=false;});
  const paint=(index)=>{
   cards.forEach((card,i)=>{
@@ -258,15 +266,12 @@ if(domain){
  };
  const updatePlayback=()=>{
   clearInterval(timer);
-  const playing=!paused&&visible&&!document.hidden;
+  const playing=!simpleMotion.matches&&visible&&!document.hidden;
   domain.dataset.playing=String(playing);
-  playback.setAttribute('aria-label',paused?'Play industry carousel':'Pause industry carousel');
-  playback.innerHTML=paused?'Play animation <span aria-hidden="true">▷</span>':'Pause animation <span aria-hidden="true">Ⅱ</span>';
   if(playing)timer=setInterval(()=>goTo(current+1,true),6000);
  };
  const goTo=(target,automatic=false)=>{
   const index=(target+cards.length)%cards.length;
-  if(!automatic)paused=true;
   if(index!==current){
    animations.forEach(animation=>animation.cancel());
    const outgoing=cards[current],direction=target>current?1:-1;
@@ -285,14 +290,12 @@ if(domain){
  domain.querySelector('.domain-prev').addEventListener('click',()=>goTo(current-1));
  domain.querySelector('.domain-next').addEventListener('click',()=>goTo(current+1));
  markers.forEach((marker,i)=>marker.addEventListener('click',()=>goTo(i)));
- playback.addEventListener('click',()=>{paused=!paused;updatePlayback();});
- domain.addEventListener('focusin',event=>{if(event.target!==playback){paused=true;updatePlayback();}});
  domain.addEventListener('keydown',event=>{
-  if(!event.target.closest('button')||event.target===playback)return;
+  if(!event.target.closest('button'))return;
   if(event.key==='ArrowDown'||event.key==='ArrowRight'){event.preventDefault();goTo(current+1);}
   else if(event.key==='ArrowUp'||event.key==='ArrowLeft'){event.preventDefault();goTo(current-1);}
  });
- simpleMotion.addEventListener('change',()=>{animations.forEach(animation=>animation.cancel());paused=simpleMotion.matches;updatePlayback();});
+ simpleMotion.addEventListener('change',()=>{animations.forEach(animation=>animation.cancel());updatePlayback();});
  document.addEventListener('visibilitychange',updatePlayback);
  if('IntersectionObserver' in window){new IntersectionObserver(entries=>{visible=entries[0].isIntersecting&&entries[0].intersectionRatio>=.35;updatePlayback();},{threshold:[0,.35]}).observe(domain);}else{visible=true;}
  paint(0);updatePlayback();

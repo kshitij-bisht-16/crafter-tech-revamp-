@@ -10,6 +10,7 @@
 .intelligence-dots circle.is-emphasized{fill:var(--primary)}
 .intelligence-copy{min-width:0;min-height:205px;display:flex;align-items:center}
 .intelligence-copy [role=tabpanel]{width:100%}
+.intelligence-copy [role=region]{width:100%}
 .intelligence-copy h3{font-size:24px;line-height:1.15;letter-spacing:-.035em;font-weight:500;margin:0 0 30px}
 .intelligence-copy p{font-size:20px;line-height:1.3;color:var(--ink);letter-spacing:-.015em;text-align:justify;hyphens:auto}
 .intelligence-nav{display:flex;flex-direction:column;align-items:stretch;gap:12px}
@@ -18,6 +19,20 @@
 .stage-dot{display:block;width:5px;height:5px;border-radius:50%;background:var(--primary);flex-shrink:0;opacity:0}.intelligence-nav button[aria-selected=true] .stage-dot{opacity:1}
 .intelligence-playback{position:absolute;right:28px;bottom:28px;display:flex;align-items:center;gap:12px;padding:10px 0;background:transparent;border:0;font-size:11px;color:var(--muted);min-height:44px}
 .intelligence-playback:hover{color:var(--blue)}
+.intelligence-scroll-section{position:relative;overflow:visible}
+.intelligence-scroll-section .intelligence-stage{position:sticky;top:var(--intelligence-sticky-top,92px);min-height:calc(100svh - 92px)}
+.intelligence-scroll-hint{position:absolute;right:28px;bottom:22px;font-size:11px;color:var(--muted)}
+@media(max-width:700px){
+ .intelligence-scroll-section .intelligence-stage{min-height:calc(100svh - 76px);padding:45px 20px 72px}
+ .intelligence-scroll-section .intelligence-corner{top:15px}
+ .intelligence-scroll-section .intelligence-visual{max-width:clamp(140px,27svh,240px)}
+ .intelligence-scroll-section .intelligence-layout{gap:16px}
+ .intelligence-scroll-section .endpoint-start{margin-bottom:12px}
+ .intelligence-scroll-section .endpoint-end{bottom:40px}
+ .intelligence-scroll-section .intelligence-copy{min-height:190px}
+ .intelligence-scroll-hint{left:0;right:0;bottom:16px;text-align:center;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.intelligence-scroll-section .intelligence-dots circle{transition:none}.intelligence-scroll-section [role=tabpanel]{animation:none!important}}
 @media(prefers-reduced-motion:no-preference){
  .intelligence-copy [role=tabpanel]:not([hidden]){animation:intelligence-copy-in .55s ease both}
  .intelligence-stage[data-playing=true] .is-emphasized{animation:intelligence-dot-breathe 4s ease-in-out infinite;animation-delay:var(--dot-delay)}
@@ -32,3 +47,19 @@
  .intelligence-nav{order:2;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:0 18px}.intelligence-nav button{font-size:12px;padding:10px 0;gap:6px;min-height:44px}.intelligence-playback{right:0;bottom:8px;width:100%;justify-content:center;font-size:10px}
 }
 @media print{.intelligence-copy [role=tabpanel][hidden]{display:block!important}.intelligence-playback{display:none}.intelligence-stage{min-height:0}.intelligence-copy{display:block}.intelligence-copy h3{margin-top:20px}}
+@media print{.intelligence-scroll-section{height:auto!important}.intelligence-scroll-section .intelligence-stage{position:static;min-height:0}.intelligence-scroll-hint{display:none}}
+
+/* The active scroll point becomes the main heading at every breakpoint. */
+.intelligence-stage .intelligence-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:7%}
+.intelligence-copy .intelligence-stage-title{font-size:clamp(38px,4.2vw,60px);line-height:1.08;letter-spacing:-.035em;color:var(--ink);margin:0 0 30px}
+.intelligence-stage .intelligence-copy{min-height:310px}
+.intelligence-copy h3{font-size:22px;margin-bottom:18px}
+.intelligence-copy p{text-align:left;hyphens:none;max-width:570px}
+@media(max-width:700px){
+ .intelligence-stage .intelligence-layout{grid-template-columns:1fr;gap:22px}
+ .intelligence-copy .intelligence-stage-title{font-size:38px;margin-bottom:22px}
+ .intelligence-copy h3{font-size:21px;line-height:1.2}
+ .intelligence-stage .intelligence-copy{min-height:300px}
+}
+@media(prefers-reduced-motion:no-preference){.intelligence-copy [role=region]:not([hidden]){animation:intelligence-copy-in .55s ease both}}
+@media print{.intelligence-copy [role=region][hidden]{display:block!important}}
