@@ -12,7 +12,7 @@
 .outcome-orbit-rings{position:absolute;width:100%;height:100%;overflow:visible;stroke:var(--primary);stroke-width:.8;opacity:.65}
 .outcome-logo-face{fill:var(--primary);fill-opacity:.04;stroke-width:1.6}
 .outcome-orbit-chips{position:absolute;inset:0}
-.outcome-orbit-chip{position:absolute;left:var(--chip-x);top:var(--chip-y);height:38px;max-width:310px;display:flex;align-items:center;gap:9px;white-space:nowrap;padding:0 11px;border:1px solid #c6d6ec;border-radius:999px;background:var(--mineral);color:var(--ink);font-size:13px;overflow:hidden;will-change:transform,opacity;box-sizing:border-box}
+.outcome-orbit-chip{position:absolute;left:var(--chip-x);top:var(--chip-y);height:38px;max-width:310px;display:flex;align-items:center;gap:9px;white-space:nowrap;padding:0 11px;border:1px solid #dedfe2;border-radius:999px;background:var(--mineral);color:var(--ink);font-size:13px;overflow:hidden;will-change:transform,opacity;box-sizing:border-box}
 .outcome-orbit-chip i{width:14px;height:14px;flex:0 0 14px;border-radius:50%;background:var(--primary)}
 .outcome-orbit-chip:nth-child(even) i{background:var(--blue-light)}
 .outcome-orbit-chip span{display:block;flex-shrink:0;will-change:transform,opacity}
@@ -20,8 +20,8 @@
 .outcome-orbit-metrics>span{display:grid;place-items:center;width:20px;height:20px;background:var(--primary);color:var(--white);border-radius:2px}
 .outcome-orbit-metrics svg{width:16px;height:16px}
 .outcome-orbit-metrics:hover{background:var(--blue-dark)}
-.outcome-metrics-dialog{width:min(1080px,calc(100% - 40px));max-height:calc(100dvh - 48px);margin:auto;padding:40px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);box-shadow:0 24px 90px #10233f30;overscroll-behavior:contain}
-.outcome-metrics-dialog::backdrop{background:#10233f66;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.outcome-metrics-dialog{width:min(1080px,calc(100% - 40px));max-height:calc(100dvh - 48px);margin:auto;padding:40px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);box-shadow:0 24px 90px #1c1c1c30;overscroll-behavior:contain}
+.outcome-metrics-dialog::backdrop{background:#1c1c1c66;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .outcome-metrics-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:18px}
 .outcome-metrics-header .eyebrow{color:var(--blue)}
 .outcome-metrics-header h2{font-size:var(--type-title);margin-top:12px}
@@ -45,3 +45,7 @@ html:has(.outcome-metrics-dialog[open]){overflow:hidden}
 @media(max-width:700px){.outcome-orbit{padding:58px 0 68px;min-height:0}.outcome-orbit h2{font-size:36px;max-width:320px}.outcome-orbit .section-label{font-size:10px}.outcome-orbit-art{top:170px;right:-25%;width:130%}.outcome-orbit-copy{width:100%;max-width:none;margin-top:clamp(340px,85vw,590px)}.outcome-orbit-copy h3{font-size:24px}.outcome-orbit-copy>div+div{margin-top:28px}.outcome-orbit-chip{font-size:10px;height:32px;gap:6px;padding-inline:8px}.outcome-orbit-chip i{width:10px;height:10px;flex-basis:10px}.outcome-orbit-metric-grid{grid-template-columns:1fr 1fr;gap:30px 22px}.outcome-orbit-metric-grid strong{font-size:54px}.outcome-orbit-metric-grid h3{font-size:18px;min-height:44px}.outcome-orbit-pause{right:12px;bottom:12px}}
 @media(prefers-reduced-motion:reduce){.outcome-orbit-chip,.outcome-orbit-chip span{will-change:auto}}
 @media(max-width:700px){.outcome-orbit-art{left:50%;right:auto;transform:translateX(-50%);height:360px;aspect-ratio:auto;overflow:hidden}.outcome-orbit-copy{margin-top:410px}}
+.outcome-orbit-metrics>span{color:var(--ink)}
+.outcome-orbit-metrics:hover,.outcome-orbit-metrics:focus-visible{background:var(--charcoal);color:var(--white)}
+.outcome-orbit-metrics:hover>span,.outcome-orbit-metrics:focus-visible>span{background:var(--blue-light)}
+.outcome-metrics-close:focus-visible{background:var(--blue-light)}
