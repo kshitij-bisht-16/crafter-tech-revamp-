@@ -2,6 +2,28 @@
 import './outcome-motion.js';
 import './heading-reveal.js';
 
+// Respect the system theme on first visit, then remember an explicit choice.
+if(!document.documentElement.dataset.theme) document.documentElement.dataset.theme = localStorage.getItem('craftertech-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+const themeToggle = document.createElement('button');
+themeToggle.className = 'theme-toggle';
+themeToggle.type = 'button';
+themeToggle.setAttribute('aria-pressed', document.documentElement.dataset.theme === 'dark');
+themeToggle.innerHTML = '<span class="theme-toggle-icon" aria-hidden="true">◐</span><span class="theme-toggle-label"></span>';
+document.querySelector('.capsule-bar')?.append(themeToggle);
+const paintTheme = theme => {
+ document.documentElement.dataset.theme = theme;
+ themeToggle.setAttribute('aria-pressed', String(theme === 'dark'));
+ themeToggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+ themeToggle.querySelector('.theme-toggle-label').textContent = theme === 'dark' ? 'Light' : 'Dark';
+ document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#15171b' : '#fafaf8');
+};
+paintTheme(document.documentElement.dataset.theme || 'light');
+themeToggle.addEventListener('click', () => {
+ const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+ localStorage.setItem('craftertech-theme', next);
+ paintTheme(next);
+});
+
 // Self-hosted Lenis; touch keeps native inertia and reduced motion is honored live.
 import Lenis from './vendor/lenis.js';
 const lenis = new Lenis({autoRaf:true, lerp:0.09, smoothWheel:true, syncTouch:false, respectReducedMotion:true});

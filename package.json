@@ -13,6 +13,6 @@
     "node": ">=20"
   },
   "dependencies": {
-    "lenis": "1.3.26"
+    "lenis": "^1.3.26"
   }
 }
