@@ -63,3 +63,5 @@
 }
 @media(prefers-reduced-motion:no-preference){.intelligence-copy [role=region]:not([hidden]){animation:intelligence-copy-in .55s ease both}}
 @media print{.intelligence-copy [role=region][hidden]{display:block!important}}
+[data-theme=dark] .intelligence-dots circle{fill:var(--muted)}
+[data-theme=dark] .intelligence-nav button{color:var(--muted)}

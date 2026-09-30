@@ -49,3 +49,8 @@ html:has(.outcome-metrics-dialog[open]){overflow:hidden}
 .outcome-orbit-metrics:hover,.outcome-orbit-metrics:focus-visible{background:var(--charcoal);color:var(--white)}
 .outcome-orbit-metrics:hover>span,.outcome-orbit-metrics:focus-visible>span{background:var(--blue-light)}
 .outcome-metrics-close:focus-visible{background:var(--blue-light)}
+[data-theme=dark] .outcome-orbit-metrics>span{color:#101820}
+[data-theme=dark] .outcome-orbit-metrics:hover>span,[data-theme=dark] .outcome-orbit-metrics:focus-visible>span{background:var(--blue);color:#101820}
+
+[data-theme=dark] .outcome-orbit-metrics,[data-theme=dark] .outcome-metrics-close{background:#fafaf8;color:#1c1c1c}
+[data-theme=dark] .outcome-orbit-metrics:hover,[data-theme=dark] .outcome-orbit-metrics:focus-visible,[data-theme=dark] .outcome-metrics-close:hover,[data-theme=dark] .outcome-metrics-close:focus-visible{background:#dbeafe;color:#1c1c1c}

@@ -20,3 +20,6 @@
 .domain-card-copy .collection-link{ text-decoration-color:var(--blue-light)}
 .domain-card-copy .collection-link:hover,.domain-card-copy .collection-link:focus-visible{color:var(--blue-dark);text-decoration-color:currentColor}
 .domain-arrows button:hover:not(:disabled),.domain-arrows button:focus-visible{background:var(--blue-light);color:var(--ink)}
+[data-theme=dark] .domain-card-copy p{color:var(--muted)}
+[data-theme=dark] .domain-arrows button{background:#fafaf8;color:#1c1c1c}
+[data-theme=dark] .domain-arrows button:hover:not(:disabled),[data-theme=dark] .domain-arrows button:focus-visible{background:#dbeafe;color:#1c1c1c}
