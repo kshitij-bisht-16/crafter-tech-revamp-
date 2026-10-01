@@ -142,3 +142,7 @@
 [data-theme=dark] .sculpture .logo-front-face{fill:#1c2940;fill-opacity:.92;stroke:var(--blue)}
 [data-theme=dark] .sculpture .logo-hatching{stroke:var(--blue);opacity:.65}
 [data-theme=dark] .sculpture .logo-shadow{display:none}
+
+/* SVG arrows avoid platform emoji substitution while preserving their scale. */
+.closing-symbol>.material-icon{width:1em;height:1em}
+.tech-names b>.material-icon,.citation b>.material-icon{width:1em;height:1em;display:inline-block;vertical-align:middle}
