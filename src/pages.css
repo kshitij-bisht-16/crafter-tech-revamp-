@@ -41,7 +41,7 @@ details[open]>summary>svg.plus{transform:rotate(45deg)}
 .page-card:has(.collection-link){height:100%}
 .page-card .collection-link{flex-shrink:0;margin-top:auto}
 
-/* Reference-inspired floating header, shared by every page. */
+/* Floating header, shared by every page. */
 .site-header.floating-header{height:108px;padding:24px 32px;position:sticky;top:0;display:flex;align-items:flex-start;justify-content:space-between;background:transparent;border:0;pointer-events:none;z-index:60}
 /* A fading backdrop softens scrolling content without blurring navigation text. */
 .floating-header::before{content:"";position:absolute;inset:0 0 -40px;z-index:-1;pointer-events:none;background:transparent;-webkit-mask-image:linear-gradient(to bottom,#000 35%,transparent);mask-image:linear-gradient(to bottom,#000 35%,transparent)}

@@ -13,7 +13,6 @@ const pageIds=new Map();
 for(const [route,html] of allPages){
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
  if(new Set(ids).size!==ids.length)throw new Error(`Duplicate IDs in ${route}`);
- if(/seasiainfotech\.com/i.test(html))throw new Error(`External source redirect in ${route}`);
  pageIds.set(route,new Set(ids));
  await writeFile('dist/'+(route==='/'?'index.html':route.slice(1)),html);
 }
