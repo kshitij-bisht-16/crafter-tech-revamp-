@@ -1,4 +1,4 @@
-// Source selections and qualifications: ../homepage-mapping.md.
+// Case studies and metrics below are third-party references, not Craftertech client claims.
 export const capabilities = [
   {title:'AI & Cognitive Technologies', short:'AI & cognitive', description:'Bring intelligence into the work itself. We integrate generative AI, machine learning, language and vision capabilities into the workflows that move your business.', tags:['Generative AI','Machine learning','NLP & computer vision'], impact:'Turn enterprise knowledge into useful, actionable intelligence.', flow:['Enterprise data','Intelligence','Real workflows']},
   {title:'Enterprise Application Engineering',short:'Application engineering',description:'Build the applications your business depends on. Scalable mobile, web and API-first products connect your teams, customers and operations.',tags:['Web & mobile','API-first architecture','Secure integrations'],impact:'Connect the experience your customers see to the systems behind it.',flow:['Customer experience','APIs & integrations','Enterprise systems']},
